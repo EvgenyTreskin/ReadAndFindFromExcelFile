@@ -1,4 +1,4 @@
-# ReadAndFindFromXlsxFile
+# ReadAndFindFromExcelFile
 
 When you run the application please enter symbols in console three time and press "Enter" after each, 
 then the program compare your data and data in .xmls/.xml file
