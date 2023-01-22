@@ -16,15 +16,22 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class ReadAndFindFromXlsxFile {
-    private static ReadAndFindFromXlsxFile readAndFindFromFile = new ReadAndFindFromXlsxFile();
     private static String filePath;
 
-    public static void setFilePath(String filePath) {
+    public ReadAndFindFromXlsxFile() {
+    }
+
+    public static String getFilePath() {
+        return filePath;
+    }
+
+    private static void setFilePath(String filePath) {
         ReadAndFindFromXlsxFile.filePath = filePath;
     }
 
     public static void main(String[] args) throws IOException {
-        readAndFindFromFile.findFromFile(readFromConsole(), readFromFile());
+        ReadAndFindFromXlsxFile readAndFindFromXlsxFile = new ReadAndFindFromXlsxFile();
+        readAndFindFromXlsxFile.findFromFile(readFromConsole(), readFromFile());
     }
 
     private static String getFileExtension(String filePath) {
@@ -37,7 +44,7 @@ public class ReadAndFindFromXlsxFile {
         XSSFWorkbook xssfWorkbook;
         HSSFWorkbook hssfWorkbook;
         setFilePath("src\\Resources\\name_java.xlsx");
-        if (Objects.equals(getFileExtension(filePath), ".xlsx")) {
+        if (Objects.equals(getFileExtension(getFilePath()), ".xlsx")) {
             try (FileInputStream xssfFileInputStream = new FileInputStream(new File(filePath))) {
                 xssfWorkbook = new XSSFWorkbook(xssfFileInputStream);
             }
@@ -96,10 +103,10 @@ public class ReadAndFindFromXlsxFile {
                         break;
                     }
                 }
-                if (!flag) {
-                    System.out.println("Номер " + consString[i] + " не найден");
-                } else {
+                if (flag) {
                     System.out.println("Номер " + consString[i] + " найден");
+                } else {
+                    System.out.println("Номер " + consString[i] + " не найден");
                 }
             }
         }
