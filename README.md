@@ -1,7 +1,7 @@
 # ReadAndFindFromXlsxFile
 
 When you compile this code you must enter three groups of symbols in console and press Enter after each, 
-then the program compare your data and data in .xmls file
+then the program compare your data and data in .xmls/.xml file
 
 Used dependencies
 <dependencies>
