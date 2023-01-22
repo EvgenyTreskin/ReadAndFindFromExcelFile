@@ -1,22 +1,18 @@
 package org.example;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class ReadAndFindFromXlsxFile
-{
+public class ReadAndFindFromXlsxFile {
     public static void main(String[] args) throws IOException {
         ReadAndFindFromXlsxFile readAndFindFromFile = new ReadAndFindFromXlsxFile();
         readAndFindFromFile.FindFromFile(ReadFromConsole(), ReadFromFile());
@@ -40,23 +36,39 @@ public class ReadAndFindFromXlsxFile
         return fileList;
     }
 
-    private static String ReadFromConsole() {
+    private static String[] ReadFromConsole() {
+        String[] s = new String[3];
+        System.out.println("Введите в консоль три искомые значения");
         Scanner consoleInput = new Scanner(System.in);
-        return consoleInput.nextLine();
+        for (int i = 0; i <= 2; i++) {
+            s[i] = consoleInput.nextLine();
+        }
+        for (String p: s){
+            System.out.println(p);
+        }
+
+        return s;
     }
 
-    private void FindFromFile(String s, ArrayList<String> fileList) throws IOException {
+    private void FindFromFile(String[] s, ArrayList<String> fileList) throws IOException {
         // не проверил эту логику поскольку не запустился проект
-        if (ReadFromConsole().equals("") || ReadFromConsole().equals(" ")) {
-            System.out.println("поиск не дает результатов");
-        } else if (!ReadFromConsole().equals("") && !ReadFromConsole().equals(" ")) {
-            for (String text : fileList) {
-                if (text.toLowerCase().contains(ReadFromConsole().toLowerCase())) {
-                    System.out.println("номер найден");
+        for (int i = 0; i <= 2; i++) {
+            if (s[i].equals("") || s[i].equals(" ")) {
+                System.out.println("поиск значения под номером " + (i + 1) + " не дает результатов");
+            } else {
+                int counter = 0;
+                for (String text : fileList) {
+                    if (text.toLowerCase().contains(s[i].toLowerCase())) {
+                        System.out.println("номер " + s[i] + " найден");
+                        counter++;
+                    }
+                }
+                if (counter == 0) {
+                    System.out.println("номер " + s[i] + " не найден");
+                } else {
+                    System.out.println("номер " + s[i] + " найден " + counter + " раз");
                 }
             }
-        } else {
-            System.out.println("номер не найден");
         }
     }
 }
