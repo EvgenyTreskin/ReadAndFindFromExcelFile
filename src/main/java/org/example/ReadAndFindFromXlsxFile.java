@@ -43,7 +43,8 @@ public class ReadAndFindFromXlsxFile {
         for (int i = 0; i <= 2; i++) {
             s[i] = consoleInput.nextLine();
         }
-        for (String p: s){
+        System.out.println("Вы ввели следущие значения");
+        for (String p : s) {
             System.out.println(p);
         }
 
@@ -51,22 +52,24 @@ public class ReadAndFindFromXlsxFile {
     }
 
     private void FindFromFile(String[] s, ArrayList<String> fileList) throws IOException {
-        // не проверил эту логику поскольку не запустился проект
+        System.out.println("В итоге");
         for (int i = 0; i <= 2; i++) {
             if (s[i].equals("") || s[i].equals(" ")) {
-                System.out.println("поиск значения под номером " + (i + 1) + " не дает результатов");
+                System.out.println("Поиск пустого " + (i + 1) + "-го значения не дает результатов");
             } else {
                 int counter = 0;
                 for (String text : fileList) {
                     if (text.toLowerCase().contains(s[i].toLowerCase())) {
-                        System.out.println("номер " + s[i] + " найден");
+//                        System.out.println("Номер " + s[i] + " найден");  // если нужно выводить сообщение каждый раз при совпадении номера
                         counter++;
                     }
                 }
                 if (counter == 0) {
-                    System.out.println("номер " + s[i] + " не найден");
+                    System.out.println("Номер " + s[i] + " не найден");
+                } else if (counter % 10 == 2 || counter % 10 == 3 || counter % 10 == 4) {
+                    System.out.println("Номер " + s[i] + " найден " + counter + " раза");
                 } else {
-                    System.out.println("номер " + s[i] + " найден " + counter + " раз");
+                    System.out.println("Номер " + s[i] + " найден " + counter + " раз");
                 }
             }
         }
