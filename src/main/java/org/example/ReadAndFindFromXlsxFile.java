@@ -70,36 +70,36 @@ public class ReadAndFindFromXlsxFile {
     }
 
     private static String[] readFromConsole() {
-        String[] s = new String[3];
+        String[] consString = new String[3];
         System.out.println("Введите в консоль три искомые значения");
         Scanner consoleInput = new Scanner(System.in);
         for (int i = 0; i <= 2; i++) {
-            s[i] = consoleInput.nextLine();
+            consString[i] = consoleInput.nextLine();
         }
         System.out.println("Вы ввели следущие значения");
-        for (String p : s) {
+        for (String p : consString) {
             System.out.println(p);
         }
 
-        return s;
+        return consString;
     }
 
-    private void findFromFile(String[] s, ArrayList<String> fileList) {
+    private void findFromFile(String[] consString, ArrayList<String> fileList) {
         for (int i = 0; i <= 2; i++) {
-            if (s[i].strip().equals("")) {
+            if (consString[i].strip().equals("")) {
                 System.out.println("Поиск пустого " + (i + 1) + "-го значения не дает результатов");
             } else {
                 boolean flag = false;
                 for (String text : fileList) {
-                    if (text.toLowerCase().contains(s[i].strip().toLowerCase())) {
+                    if (text.toLowerCase().contains(consString[i].strip().toLowerCase())) {
                         flag = true;
                         break;
                     }
                 }
                 if (!flag) {
-                    System.out.println("Номер " + s[i] + " не найден");
+                    System.out.println("Номер " + consString[i] + " не найден");
                 } else {
-                    System.out.println("Номер " + s[i] + " найден");
+                    System.out.println("Номер " + consString[i] + " найден");
                 }
             }
         }
