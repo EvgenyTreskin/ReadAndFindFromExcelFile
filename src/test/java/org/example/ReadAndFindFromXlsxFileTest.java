@@ -1,20 +1,16 @@
 package org.example;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for simple ReadAndFindFromXlsxFile.
  */
 public class ReadAndFindFromXlsxFileTest
 {
-    /**
-     * Rigorous Test :-)
-     */
+
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    void main() {
     }
 }
